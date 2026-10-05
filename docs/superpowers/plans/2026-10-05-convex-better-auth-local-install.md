@@ -9,6 +9,7 @@
 **Tech Stack:** Convex, Better Auth (`better-auth`, `@convex-dev/better-auth`), TypeScript, pnpm monorepo.
 
 ## Global Constraints
+
 - Target paths: `packages/backend/convex/...`
 - Monorepo package: `@jmwired/backend`
 - Node/pnpm monorepo commands executed with proper working directory or filter (`pnpm --filter @jmwired/backend ...`)
@@ -19,10 +20,12 @@
 ### Task 1: Define Local Component and Split Auth Options
 
 **Files:**
+
 - Create: `packages/backend/convex/betterAuth/convex.config.ts`
 - Modify: `packages/backend/convex/auth.ts:1-40`
 
 **Interfaces:**
+
 - Consumes: Existing Better Auth configuration in `packages/backend/convex/auth.ts`
 - Produces:
   - `packages/backend/convex/betterAuth/convex.config.ts`: default export `defineComponent("betterAuth")`
@@ -31,6 +34,7 @@
 - [ ] **Step 1: Create `convex/betterAuth/convex.config.ts`**
 
 Write the component definition:
+
 ```ts
 import { defineComponent } from "convex/server";
 
@@ -42,6 +46,7 @@ export default component;
 - [ ] **Step 2: Refactor `packages/backend/convex/auth.ts` to export `createAuthOptions`**
 
 Update `packages/backend/convex/auth.ts` to extract `createAuthOptions`:
+
 ```ts
 import { createClient, type GenericCtx } from "@convex-dev/better-auth";
 import { convex } from "@convex-dev/better-auth/plugins";
@@ -103,10 +108,12 @@ git commit -m "feat(auth): define local betterAuth component and export createAu
 ### Task 2: Setup Static Auth Export and Generate Schema
 
 **Files:**
+
 - Create: `packages/backend/convex/betterAuth/auth.ts`
 - Create/Generate: `packages/backend/convex/betterAuth/schema.ts`
 
 **Interfaces:**
+
 - Consumes: `createAuth` from `../auth`
 - Produces:
   - `packages/backend/convex/betterAuth/auth.ts`: exports static `auth` instance
@@ -115,6 +122,7 @@ git commit -m "feat(auth): define local betterAuth component and export createAu
 - [ ] **Step 1: Create `packages/backend/convex/betterAuth/auth.ts`**
 
 Write the static auth instance file used strictly for schema generation:
+
 ```ts
 import { createAuth } from "../auth";
 
@@ -125,10 +133,13 @@ export const auth = createAuth({} as any);
 - [ ] **Step 2: Generate the schema via Better Auth CLI**
 
 Run from `packages/backend/convex/betterAuth`:
+
 ```bash
 pnpx @better-auth/cli generate
 ```
+
 or if using npx:
+
 ```bash
 npx @better-auth/cli generate
 ```
@@ -149,11 +160,13 @@ git commit -m "feat(auth): generate local betterAuth schema"
 ### Task 3: Export Adapter Functions and Register Local Component
 
 **Files:**
+
 - Create: `packages/backend/convex/betterAuth/adapter.ts`
 - Modify: `packages/backend/convex/convex.config.ts:1-10`
 - Modify: `packages/backend/convex/auth.ts:1-20`
 
 **Interfaces:**
+
 - Consumes:
   - `packages/backend/convex/betterAuth/schema.ts`
   - `createAuthOptions` from `../auth`
@@ -170,20 +183,14 @@ import { createApi } from "@convex-dev/better-auth";
 import { createAuthOptions } from "../auth";
 import schema from "./schema";
 
-export const {
-  create,
-  findOne,
-  findMany,
-  updateOne,
-  updateMany,
-  deleteOne,
-  deleteMany,
-} = createApi(schema, createAuthOptions);
+export const { create, findOne, findMany, updateOne, updateMany, deleteOne, deleteMany } =
+  createApi(schema, createAuthOptions);
 ```
 
 - [ ] **Step 2: Update `packages/backend/convex/convex.config.ts`**
 
 Replace remote `@convex-dev/better-auth/convex.config` import with local `./betterAuth/convex.config`:
+
 ```ts
 import polar from "@convex-dev/polar/convex.config.js";
 import { defineApp } from "convex/server";
@@ -200,6 +207,7 @@ export default app;
 - [ ] **Step 3: Update `packages/backend/convex/auth.ts` to pass local schema**
 
 Import `authSchema from "./betterAuth/schema"` and configure `authComponent`:
+
 ```ts
 import { createClient, type GenericCtx } from "@convex-dev/better-auth";
 import { convex } from "@convex-dev/better-auth/plugins";
@@ -213,14 +221,11 @@ import authSchema from "./betterAuth/schema";
 
 const siteUrl = process.env.SITE_URL || "http://localhost:3001";
 
-export const authComponent = createClient<DataModel, typeof authSchema>(
-  components.betterAuth,
-  {
-    local: {
-      schema: authSchema,
-    },
-  }
-);
+export const authComponent = createClient<DataModel, typeof authSchema>(components.betterAuth, {
+  local: {
+    schema: authSchema,
+  },
+});
 
 export const createAuthOptions = (ctx: GenericCtx<DataModel>) => {
   return {
@@ -283,6 +288,7 @@ Expected: PASS (0 errors)
 - [ ] **Step 3: Commit any formatting or lint fixes**
 
 If any formatting or lint tweaks were needed:
+
 ```bash
 git add -A
 git commit -m "chore(auth): lint and format local install"
