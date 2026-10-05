@@ -10,6 +10,7 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "check-types": "turbo run check-types",
+    "lint": "oxlint",
     "dev:web": "turbo run dev -F web --",
     "dev:server": "turbo run dev -F @jmwired/backend --",
     "dev:setup": "turbo run dev:setup -F @jmwired/backend --",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@jmwired/config": "workspace:*",
+    "@shadcn/lint": "^0.2.0",
     "@types/node": "catalog:",
     "oxfmt": "^0.66.0",
     "oxlint": "^1.81.0",
