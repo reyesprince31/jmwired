@@ -71,10 +71,21 @@ We follow **Approach 1: URL-Scoped Staff Dashboards with Unified Customer Portal
 ```
 
 ### Route Structure
-- **Public & Auth**:
-  - `/` — Marketing / Sign-in landing.
-  - `/activate?code=...` — Subscriber onboarding with an activation code.
-  - `/join/[orgSlug]` — Public self-service installation/connection application.
+- **Authentication & Onboarding**:
+  - `/sign-in` — Unified login page with role-based post-login routing (Super Admin -> `/super-admin`, Staff -> `/app/[orgSlug]`, Customer -> `/portal`).
+  - `/sign-up` — Registration for branch operators and staff.
+  - `/forgot-password` — Request password reset email / link.
+  - `/reset-password` — Set new password using secure recovery token.
+  - `/activate?code=...` — Subscriber onboarding with an activation code (claims existing customer record).
+  - `/join/[orgSlug]` — Public branch self-service installation/connection application.
+- **Account & Security Settings**:
+  - `/account` (accessible across all roles, with role-specific views):
+    - Personal Profile: Name, email, role badge, connected branch.
+    - Security: Change password with current password verification and option to revoke other active sessions.
+    - Session Management: Active device indicators and secure 1-click sign out.
+  - `/app/[orgSlug]/settings` — Branch Organization Settings:
+    - Branch Profile: Name, slug, service areas, contact numbers.
+    - Team Management: Invite staff members and assign roles (`admin`, `billing`, `technician`, `support`).
 - **Branch Staff Dashboard (`/app/[orgSlug]`)**:
   - `/app/[orgSlug]/dashboard` — Monthly financial and subscriber summary.
   - `/app/[orgSlug]/customers` — Subscriber directory (with 1-click paid toggles and manual cash entry).
@@ -88,6 +99,7 @@ We follow **Approach 1: URL-Scoped Staff Dashboards with Unified Customer Portal
   - `/portal` — Plan details, current due amount, and active outage alerts.
   - `/portal/bills` — Payment instructions with branch QR code, reference number input, and screenshot upload.
   - `/portal/support` — Report an issue (No internet, Red LOS, Slow speed) and live chat.
+  - `/portal/account` — Customer account & contact details matching connection info.
 - **Super Admin (`/super-admin`)**:
   - `/super-admin/organizations` — List, create, and manage tenant organizations.
   - `/super-admin/system` — Platform kill switch, AI API configuration, and global audit logs.
@@ -259,13 +271,21 @@ platformConfig: defineTable({
 
 ## 5. Phased Implementation Roadmap
 
-### **Phase 1: Multi-Tenant Foundation & Auth Setup**
+### **Phase 1: Multi-Tenant Foundation, Authentication & Account Settings**
 - [ ] Configure Better Auth with `organization` and `admin` plugins in `packages/backend/convex/auth.ts`.
 - [ ] Create multi-tenant helper functions: `requireOrgStaff(ctx, orgSlug, roles)` and `requireCustomer(ctx)`.
-- [ ] Implement Next.js app layouts:
-  - Branch Admin layout (`/app/[orgSlug]`) with organization switcher and active org header.
-  - Unified Subscriber Portal layout (`/portal`) with mobile-first bottom tabs.
-  - Super Admin layout (`/super-admin`).
+- [ ] Implement Authentication Pages & Flows:
+  - Unified `/sign-in` page with role-based post-login redirection (Super Admin -> `/super-admin`, Staff -> `/app/[orgSlug]`, Subscriber -> `/portal`).
+  - `/sign-up` page for branch owners and staff members.
+  - `/forgot-password` and `/reset-password` token recovery flow.
+  - `/activate` subscriber code redemption page.
+- [ ] Implement Account & Security Settings Pages:
+  - User Account Settings (`/account`) with profile details, change password (with session revocation option), and sign out.
+  - Branch Organization Settings (`/app/[orgSlug]/settings`) for branch details, team invites, and role assignments (`admin`, `billing`, `technician`, `support`).
+- [ ] Implement Core Application Layouts:
+  - Branch Admin Shell (`/app/[orgSlug]`) with organization switcher and active branch context.
+  - Unified Subscriber Portal Shell (`/portal`) with mobile-friendly bottom navigation.
+  - Super Admin Shell (`/super-admin`).
 
 ### **Phase 2: Subscriber Directory & Quick Operations (Spreadsheet Modernization)**
 - [ ] Implement `customers` Convex schema with fast search index and area/status filters.
