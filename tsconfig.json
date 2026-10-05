@@ -1,0 +1,3 @@
+{
+  "extends": "@jmwired/config/tsconfig.base.json"
+}
