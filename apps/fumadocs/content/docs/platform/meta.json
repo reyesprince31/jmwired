@@ -1,8 +1,4 @@
 {
   "title": "For platform owners",
-  "pages": [
-    "index",
-    "system",
-    "audit"
-  ]
+  "pages": ["index", "system", "audit"]
 }

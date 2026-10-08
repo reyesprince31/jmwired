@@ -1,10 +1,4 @@
 {
   "title": "For customers",
-  "pages": [
-    "index",
-    "billing",
-    "support",
-    "updates",
-    "account"
-  ]
+  "pages": ["index", "usage", "billing", "support", "updates", "account", "troubleshooting"]
 }
