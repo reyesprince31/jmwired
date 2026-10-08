@@ -6,6 +6,8 @@
 
 ---
 
+> **2026-10-08 implementation note:** The full interactive UI plan and audience-specific Fumadocs guides now have a preview implementation. The user's newer route decisions supersede /app/[orgSlug] and /super-admin: use /organization/[orgSlug] and /admin. Live installation, backend schemas, authentication, permission enforcement, AI, push, and router integration remain deferred. See [the current coverage ledger](../../plans/2026-10-08-spec-coverage.md). Phase checkboxes below describe production integration and are intentionally not marked complete by the UI preview.
+
 ## 1. Executive Summary & Problem Statement
 
 Small, community-based Internet Service Providers (ISPs) in the Philippines (e.g., local fiber, wireless relay networks) typically track subscribers, billing, and operational expenses using manual monthly spreadsheets (such as `CLIENTLIST 2025.xlsx`). 

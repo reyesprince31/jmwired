@@ -24,7 +24,21 @@ pnpm install
 
 ## Convex Setup
 
-This project uses Convex as a backend. You'll need to set up Convex before running the app:
+### Portal preview
+
+The current web UI uses fictional browser-only data. Public marketing pages live at `/`, `/platform`, `/billing`, `/customer-portal`, `/support`, `/multi-location`, and `/about`. Organization operations use `/organization/[orgSlug]` (for example `/organization/poblacion`), super-admin management uses `/admin`, and the customer portal uses `/portal`. `/organization`, `/dashboard`, and old unscoped organization links open the selected workspace. `/admin/platform` redirects to `/admin`. Platform administration is accessed from the profile dropdown. Workspace selection and role choices do not enforce authentication yet.
+
+Run `pnpm --filter web dev`, then open [the public site](http://127.0.0.1:3001), [the organization workspace](http://127.0.0.1:3001/organization), [super-admin management](http://127.0.0.1:3001/admin), or [the customer portal](http://127.0.0.1:3001/portal). The preview does not call Convex or Better Auth; the existing Varlock configuration still loads the app environment schema.
+
+Try the monthly ledger and CSV export, cash collection, expense receipts and monthly profit, branch QR setup, screenshot review, assigned tickets and internal notes, outage reply automation, targeted announcements, installation applications and activation, account/recovery screens, and platform maintenance/AI settings. Organizations have separate records. Changes stay in this browser and synchronize across tabs; use **Restore sample data** to reset them. Passwords and AI key values are discarded. Device push, live account security, AI services, and router monitoring are not connected. These limitations are explained in **Workspace setup** and the help center's preview guide.
+
+App Router files are thin page/layout wrappers. Feature UI lives under `apps/web/src/components/{customers,payments,support,announcements,organization,platform,account}`. Organization/customer shells live in `components/portal`, the super-admin shell lives in `components/platform`, and state lives in `components/workspace`. The `(marketing)` and `(workspace)` route groups keep public and product layouts separate without changing URL paths. Records and forms have dedicated routes, including `/organization/customers/[id]`, `/organization/payments/[id]`, `/organization/support/[id]`, `/organization/settings`, `/organization/new`, `/portal/payments/[id]`, and `/portal/support/[id]`.
+
+Run the state regression check with `node --experimental-strip-types --test apps/web/src/lib/mock-data.test.mjs`. Run `pnpm lint` and `pnpm --filter web check-types` for code checks.
+
+Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 20 customer, staff, and platform guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
+
+For live backend integration, set up Convex before replacing the mock provider:
 
 ```bash
 pnpm run dev:setup
