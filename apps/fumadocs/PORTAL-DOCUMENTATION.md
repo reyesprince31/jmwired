@@ -4,12 +4,12 @@ The help center is implemented in the existing Fumadocs app. Run pnpm --filter f
 
 ## Published preview guides
 
-- General: welcome, account access/activation/recovery, new connection requests, and preview limitations.
+- General: welcome, account access/activation/recovery, new connection requests, equipment/services and quote inquiries, and preview limitations.
 - Customers: overview, usage/status explanations, billing/proof/history, support/status, updates, account/notifications/security, and troubleshooting.
 - Branch teams: overview, setup, daily operations, subscribers/activation/notes, monthly billing and CSV, QR settings, expenses/receipts, assigned support/internal notes/automation, announcements, installation applications, organization/team roles, and a dedicated network reporting guide.
 - Platform owners: overview, system/AI/maintenance/registration controls, audit log.
 
-There are 26 MDX pages under content/docs with ordered navigation in meta.json files and the existing full-text search. Workspace help links open the matching audience section. Seventeen screenshots under public/help show current customer, branch, and platform workflows, including a mobile support conversation. Captures use an isolated browser with fictional sample records. Article instructions use the current labels, including the single top-right profile dropdown. Starter sample pages and developer-facing copy controls were removed.
+There are 27 MDX pages under content/docs with ordered navigation in meta.json files and the existing full-text search. Workspace help links open the matching audience section. Seventeen screenshots under public/help show current customer, branch, and platform workflows, including a mobile support conversation. Captures use an isolated browser with fictional sample records. Article instructions use the current labels, including the single top-right profile dropdown. Starter sample pages and developer-facing copy controls were removed.
 
 ## Editorial rules
 

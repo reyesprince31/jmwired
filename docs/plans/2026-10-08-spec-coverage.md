@@ -13,7 +13,7 @@ Baseline: docs/superpowers/specs/2026-10-05-isp-saas-portal-design.md. The lates
 | 5: Platform                | Organization/user overview and roles; maintenance confirmation/customer maintenance page; registration controls; provider/model/token cap/key setup preview; browser audit events                                                                                        |
 | 6: Alerts and usage        | Branch/area/customer announcements and outage resolution; in-app notification preferences and previews; saved usage/network page and router setup status                                                                                                                 |
 | Installation applications  | Public /join/[orgSlug] form, contact consent, queue/review/contact/decline/approve, pending subscriber creation, activation flow                                                                                                                                         |
-| User documentation         | 26 Fumadocs guides covering customers, branch teams, platform owners, access, and preview limits                                                                                                                                                                         |
+| User documentation         | 27 Fumadocs guides covering customers, branch teams, platform owners, access, shop inquiries, and preview limits                                                                                                                                                                         |
 
 ## Deliberate preview boundaries
 

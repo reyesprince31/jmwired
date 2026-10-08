@@ -1,4 +1,13 @@
 {
   "title": "JMWired",
-  "pages": ["index", "access", "connection-request", "customer", "staff", "platform", "preview"]
+  "pages": [
+    "index",
+    "access",
+    "connection-request",
+    "shop",
+    "customer",
+    "staff",
+    "platform",
+    "preview"
+  ]
 }

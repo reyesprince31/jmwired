@@ -26,7 +26,7 @@ pnpm install
 
 ### Portal preview
 
-The current web UI uses fictional browser-only data. Public marketing pages live at `/`, `/platform`, `/billing`, `/customer-portal`, `/support`, `/multi-location`, and `/about`. Organization operations use `/organization/[orgSlug]` (for example `/organization/poblacion`), super-admin management uses `/admin`, and the customer portal uses `/portal`. `/organization`, `/dashboard`, and old unscoped organization links open the selected workspace. `/admin/platform` redirects to `/admin`. Platform administration is accessed from the profile dropdown. Workspace selection and role choices do not enforce authentication yet.
+The current web UI uses fictional browser-only data. Public marketing pages live at `/`, `/platform`, `/billing`, `/customer-portal`, `/support`, `/multi-location`, and `/about`. The equipment and services catalog lives at `/shop`, with item pages at `/shop/[slug]` and downloadable quote inquiries at `/shop/inquiry`. Organization operations use `/organization/[orgSlug]` (for example `/organization/poblacion`), super-admin management uses `/admin`, and the customer portal uses `/portal`. `/organization`, `/dashboard`, and old unscoped organization links open the selected workspace. `/admin/platform` redirects to `/admin`. Platform administration is accessed from the profile dropdown. Workspace selection and role choices do not enforce authentication yet.
 
 Run `pnpm --filter web dev`, then open [the public site](http://127.0.0.1:3001), [the organization workspace](http://127.0.0.1:3001/organization), [super-admin management](http://127.0.0.1:3001/admin), or [the customer portal](http://127.0.0.1:3001/portal). The preview does not call Convex or Better Auth; the existing Varlock configuration still loads the app environment schema.
 
@@ -36,7 +36,11 @@ App Router files are thin page/layout wrappers. Feature UI lives under `apps/web
 
 Run the state regression check with `node --experimental-strip-types --test apps/web/src/lib/mock-data.test.mjs`. Run `pnpm lint` and `pnpm --filter web check-types` for code checks.
 
-Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 26 customer, staff, and platform guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
+The shop has 15 quote-based listings with category filters, search, and five illustrative product photos. Inquiries save only the latest copy on the device and can be downloaded; delivery to staff, actual prices, inventory, and checkout are not connected. Run `node apps/web/scripts/shop.check.mjs` with Playwright available and the web server running to check browsing, inquiry/download behavior, responsive layouts, and sitemap/robots output. Override `PORTAL_URL` to check another local port. Image prompts are recorded in [the shop asset notes](docs/plans/2026-10-08-shop-assets.md).
+
+`/sitemap` provides a visitor directory. `/sitemap.xml` includes public pages and every catalog item; `/robots.txt` tells crawlers to avoid account and workspace routes. These crawler hints do not enforce access control. Set `SITE_URL` to the deployed public origin before publishing; local previews default to `http://127.0.0.1:3001`.
+
+Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 27 customer, staff, platform, and shop guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
 
 For live backend integration, set up Convex before replacing the mock provider:
 

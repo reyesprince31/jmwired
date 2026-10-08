@@ -296,6 +296,7 @@ try {
     "",
     "access",
     "connection-request",
+    "shop",
     "preview",
     "customer",
     "customer/billing",
@@ -335,7 +336,7 @@ try {
   assert((await search.json()).length > 0);
   assert.equal(errors.length, 0, JSON.stringify(errors));
   console.log(
-    "Passed: scoped routes, expenses/ledger/export, QR configuration, private notes, assignment, applications/activation, outage automation, maintenance/AI controls, account flows, mobile layouts, and all 26 help guides.",
+    "Passed: scoped routes, expenses/ledger/export, QR configuration, private notes, assignment, applications/activation, outage automation, maintenance/AI controls, account flows, mobile layouts, and all 27 help guides.",
   );
 } finally {
   await browser.close();
