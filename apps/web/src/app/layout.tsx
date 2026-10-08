@@ -3,10 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "../index.css";
 
-import Header from "@/components/header";
-import Providers from "@/components/providers";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@jmwired/ui/components/sonner";
 import PwaRegistration from "@/components/pwa-registration";
-import { getToken } from "@/lib/auth-server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,27 +18,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "jmwired",
-  description: "jmwired",
+  title: "JMWired · Your network, connected",
+  description: "Customer accounts, billing, and support for your local internet community.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const token = await getToken();
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <PwaRegistration />
 
-        <Providers initialToken={token}>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
-            <Header />
-            {children}
-          </div>
-        </Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          {children}
+          <Toaster richColors />
+        </ThemeProvider>
       </body>
     </html>
   );
