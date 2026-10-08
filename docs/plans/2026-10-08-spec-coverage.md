@@ -4,16 +4,16 @@ Baseline: docs/superpowers/specs/2026-10-05-isp-saas-portal-design.md. The lates
 
 ## Visualized phases
 
-| Spec phase | Interactive preview coverage |
-| --- | --- |
+| Spec phase                 | Interactive preview coverage                                                                                                                                                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1: Foundation and accounts | Separate organization/customer/platform layouts; organization-slug URLs; branch creation/switching; owner/admin/member/billing/technician/support role selectors; sign-in/sign-up/recovery/reset/activation screens; profile, placeholder password flow, and device list |
-| 2: Subscriber operations | Search/status/area filters; subscriber details and notes; billing days; Active/Suspended/Pending installation; quick cash recording; installation date/type; optional activation codes and portal status |
-| 3: Billing and expenses | Monthly clients/paid/collections/expenses/profit; filtered ledger/CSV; branch GCash/Maya/Bank destination and QR upload; customer proof submission/history; approve/reject/reviewer metadata; categorized expenses with receipt/edit/delete |
-| 4: Support | Customer issue categories and history; staff inbox/status/priority/assignment/assignee filter; public replies/internal notes; template summaries/drafts; configurable outage or off-hours acknowledgements |
-| 5: Platform | Organization/user overview and roles; maintenance confirmation/customer maintenance page; registration controls; provider/model/token cap/key setup preview; browser audit events |
-| 6: Alerts and usage | Branch/area/customer announcements and outage resolution; in-app notification preferences and previews; saved usage/network page and router setup status |
-| Installation applications | Public /join/[orgSlug] form, contact consent, queue/review/contact/decline/approve, pending subscriber creation, activation flow |
-| User documentation | 20 Fumadocs guides covering customers, branch teams, platform owners, access, and preview limits |
+| 2: Subscriber operations   | Search/status/area filters; subscriber details and notes; billing days; Active/Suspended/Pending installation; quick cash recording; installation date/type; optional activation codes and portal status                                                                 |
+| 3: Billing and expenses    | Monthly clients/paid/collections/expenses/profit; filtered ledger/CSV; branch GCash/Maya/Bank destination and QR upload; customer proof submission/history; approve/reject/reviewer metadata; categorized expenses with receipt/edit/delete                              |
+| 4: Support                 | Customer issue categories and history; staff inbox/status/priority/assignment/assignee filter; public replies/internal notes; template summaries/drafts; configurable outage or off-hours acknowledgements                                                               |
+| 5: Platform                | Organization/user overview and roles; maintenance confirmation/customer maintenance page; registration controls; provider/model/token cap/key setup preview; browser audit events                                                                                        |
+| 6: Alerts and usage        | Branch/area/customer announcements and outage resolution; in-app notification preferences and previews; saved usage/network page and router setup status                                                                                                                 |
+| Installation applications  | Public /join/[orgSlug] form, contact consent, queue/review/contact/decline/approve, pending subscriber creation, activation flow                                                                                                                                         |
+| User documentation         | 26 Fumadocs guides covering customers, branch teams, platform owners, access, and preview limits                                                                                                                                                                         |
 
 ## Deliberate preview boundaries
 

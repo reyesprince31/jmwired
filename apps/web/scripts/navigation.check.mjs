@@ -295,12 +295,15 @@ try {
   const guides = [
     "",
     "access",
+    "connection-request",
     "preview",
     "customer",
     "customer/billing",
     "customer/support",
     "customer/updates",
     "customer/account",
+    "customer/usage",
+    "customer/troubleshooting",
     "staff",
     "staff/customers",
     "staff/billing",
@@ -309,6 +312,9 @@ try {
     "staff/support",
     "staff/announcements",
     "staff/organization",
+    "staff/getting-started",
+    "staff/daily-work",
+    "staff/network",
     "staff/applications",
     "platform",
     "platform/system",
@@ -329,7 +335,7 @@ try {
   assert((await search.json()).length > 0);
   assert.equal(errors.length, 0, JSON.stringify(errors));
   console.log(
-    "Passed: scoped routes, expenses/ledger/export, QR configuration, private notes, assignment, applications/activation, outage automation, maintenance/AI controls, account flows, mobile layouts, and all 20 help guides.",
+    "Passed: scoped routes, expenses/ledger/export, QR configuration, private notes, assignment, applications/activation, outage automation, maintenance/AI controls, account flows, mobile layouts, and all 26 help guides.",
   );
 } finally {
   await browser.close();

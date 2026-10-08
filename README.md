@@ -36,7 +36,7 @@ App Router files are thin page/layout wrappers. Feature UI lives under `apps/web
 
 Run the state regression check with `node --experimental-strip-types --test apps/web/src/lib/mock-data.test.mjs`. Run `pnpm lint` and `pnpm --filter web check-types` for code checks.
 
-Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 20 customer, staff, and platform guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
+Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 26 customer, staff, and platform guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
 
 For live backend integration, set up Convex before replacing the mock provider:
 
