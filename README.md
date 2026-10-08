@@ -40,6 +40,8 @@ The shop has 15 quote-based listings with category filters, search, and five ill
 
 `/sitemap` provides a visitor directory. `/sitemap.xml` includes public pages and every catalog item; `/robots.txt` tells crawlers to avoid account and workspace routes. These crawler hints do not enforce access control. Set `SITE_URL` to the deployed public origin before publishing; local previews default to `http://127.0.0.1:3001`.
 
+On Vercel, set `SITE_URL=https://jmwired.ayosgawa.com` in the web project's Production environment and redeploy. Turbo includes this value in its environment and cache hash so a domain change rebuilds the sitemap and metadata. Run `node apps/web/scripts/site-env.check.mjs` to verify environment forwarding and cache invalidation. Public crawls should exclude the account/workspace paths in `robots.txt`; links to those routes in the site navigation can otherwise produce crawler warnings.
+
 Local installation and live Better Auth admin/organization plugin integration are deferred. The existing Fumadocs app now contains 27 customer, staff, platform, and shop guides with sidebar navigation and search. Run `pnpm --filter fumadocs dev` and open [JMWired Help Center](http://127.0.0.1:4001/docs). Port 4001 avoids another local project's documentation server. The documentation index is in [PORTAL-DOCUMENTATION.md](apps/fumadocs/PORTAL-DOCUMENTATION.md), and specification coverage is tracked in [the coverage ledger](docs/plans/2026-10-08-spec-coverage.md).
 
 For live backend integration, set up Convex before replacing the mock provider:
