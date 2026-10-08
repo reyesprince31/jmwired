@@ -2,15 +2,7 @@ import Link from "next/link";
 import { Button } from "@jmwired/ui/components/button";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { Brand } from "@/components/portal/portal-ui";
-
-export const marketingNavigation = [
-  { href: "/platform", label: "Platform" },
-  { href: "/billing", label: "Billing" },
-  { href: "/customer-portal", label: "Customer portal" },
-  { href: "/support", label: "Support" },
-  { href: "/multi-location", label: "Multiple locations" },
-  { href: "/about", label: "About" },
-] as const;
+import { marketingNavigation } from "@/lib/site";
 
 export function MarketingShell({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +19,7 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
             <Brand />
           </Link>
           <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex">
-            {marketingNavigation.slice(0, 4).map((entry) => (
+            {marketingNavigation.slice(0, 5).map((entry) => (
               <Link
                 key={entry.href}
                 href={entry.href}
@@ -138,6 +130,9 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
         </div>
         <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-3 border-t px-5 py-5 text-xs text-muted-foreground lg:px-8">
           <span>© 2026 JMWired</span>
+          <Link href="/sitemap" className="hover:underline">
+            Sitemap
+          </Link>
           <span>Internet operations, with people in mind.</span>
         </div>
       </footer>

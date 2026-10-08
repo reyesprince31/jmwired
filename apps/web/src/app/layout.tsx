@@ -6,6 +6,7 @@ import "../index.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@jmwired/ui/components/sonner";
 import PwaRegistration from "@/components/pwa-registration";
+import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "JMWired · Your network, connected",
   description: "Customer accounts, billing, and support for your local internet community.",
 };
