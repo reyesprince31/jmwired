@@ -268,6 +268,8 @@ try {
     "/reset-password",
     "/portal/account",
     "/portal/updates",
+    "/plans",
+    "/coverage",
   ])
     await go(route);
   await go("/organization/san-jose");
@@ -284,6 +286,8 @@ try {
     "/sign-in",
     "/join/poblacion",
     "/portal/account",
+    "/plans",
+    "/coverage",
   ]) {
     await go(route);
     assert.ok(

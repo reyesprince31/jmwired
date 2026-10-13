@@ -5,7 +5,7 @@ import officeImage from "../../../public/images/local-office.png";
 import { Button } from "@jmwired/ui/components/button";
 import { ArrowRight, ArrowUpRight, Check, FileImage, MessageSquare, Wifi } from "lucide-react";
 
-function WorkspaceLink() {
+export function WorkspaceLink() {
   return (
     <Button size="touch" nativeButton={false} role="link" render={<Link href="/organization" />}>
       Open workspace
@@ -13,7 +13,7 @@ function WorkspaceLink() {
     </Button>
   );
 }
-function PageIntro({
+export function PageIntro({
   title,
   description,
   children,
@@ -35,7 +35,7 @@ function PageIntro({
     </section>
   );
 }
-function ProductImage({ src, alt }: { src: string; alt: string }) {
+export function ProductImage({ src, alt }: { src: string; alt: string }) {
   return (
     <Image
       src={src}
@@ -48,7 +48,7 @@ function ProductImage({ src, alt }: { src: string; alt: string }) {
     />
   );
 }
-function Closing({ title, children }: { title: string; children?: React.ReactNode }) {
+export function Closing({ title, children }: { title: string; children?: React.ReactNode }) {
   return (
     <section className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-t px-5 py-12 lg:px-8">
       <div>
@@ -87,10 +87,19 @@ export function HomePage() {
               size="touch"
               nativeButton={false}
               role="link"
+              render={<Link href="/plans" />}
+            >
+              Explore plans
+              <ArrowRight />
+            </Button>
+            <Button
+              variant="outline"
+              size="touch"
+              nativeButton={false}
+              role="link"
               render={<Link href="/portal" />}
             >
-              View customer portal
-              <ArrowRight />
+              Customer portal
             </Button>
           </div>
         </div>

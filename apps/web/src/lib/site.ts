@@ -3,6 +3,8 @@ import { ENV } from "@/env";
 export const siteUrl = new URL(ENV.SITE_URL ?? "http://127.0.0.1:3001").origin;
 
 export const marketingNavigation = [
+  { href: "/plans", label: "Plans" },
+  { href: "/coverage", label: "Coverage" },
   { href: "/shop", label: "Shop" },
   { href: "/platform", label: "Platform" },
   { href: "/billing", label: "Billing" },

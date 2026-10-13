@@ -48,11 +48,14 @@ lerna-debug.log*
 .vercel
 
 # Testing
-coverage
+/coverage
+coverage.xml
 .nyc_output
+!apps/web/src/app/(marketing)/coverage
 
 # Misc
 *.tgz
+*.xlsx
 .cache
 tmp
 temp
