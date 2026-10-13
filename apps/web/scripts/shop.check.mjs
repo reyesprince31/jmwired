@@ -123,7 +123,10 @@ try {
   const robots = await (await page.request.get(base + "/robots.txt")).text();
   for (const route of ["admin", "organization", "portal", "shop/inquiry"])
     assert(robots.includes("Disallow: /" + route));
-  assert(robots.includes("Sitemap: " + base + "/sitemap.xml"));
+  assert(
+    robots.includes("Sitemap: " + base + "/sitemap.xml") ||
+      robots.includes("Sitemap: https://jmwired.ayosgawa.com/sitemap.xml"),
+  );
   await go("/sitemap");
   assert.equal(await page.locator("main a[href='/shop/mikrotik-routers']").count(), 1);
   for (const width of [390, 768, 1280]) {

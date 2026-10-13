@@ -1,6 +1,12 @@
 import { ENV } from "@/env";
 
-export const siteUrl = new URL(ENV.SITE_URL ?? "http://127.0.0.1:3001").origin;
+export const siteUrl = new URL(
+  ENV.SITE_URL && ENV.SITE_URL !== "http://127.0.0.1:3001"
+    ? ENV.SITE_URL
+    : process.env.NODE_ENV === "production"
+      ? "https://jmwired.ayosgawa.com"
+      : (ENV.SITE_URL ?? "http://127.0.0.1:3001"),
+).origin;
 
 export const marketingNavigation = [
   { href: "/plans", label: "Plans" },
